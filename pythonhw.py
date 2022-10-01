@@ -12,19 +12,29 @@ sample2 = [['Jun-10',34543],['Jun-11',3],['Jun-12',343],['Jun-13',341],['Jun-14'
 length_of_list2 = len(sample2)
 print(length_of_list2)
 
-# sum_of_list2 = sum(sample2)
+# this will not work
+# sum_of_list2 = sum(sample2) 
+
 
 subtotal = []
-for row in sample2:
+
+# method 1: loop through the rows of data, where 'row' stores the actual values of data
+for row in sample2: # row = ['Jun-10',34543'],['Jun-11',3], etc...
   subtotal.append(row[1])
 
-print(subtotal)
-print(sum(subtotal))
+print(subtotal) # [34543, 3, 343, 341, 32, 33, 343]
+print(sum(subtotal)) # 35638
 
 subtotal2 = []
-
+# method 2: loop through the row numbers up to the length of the dataset
+# use this method so that you can access rows above or below the current row
 for rownumber in range(len(sample2)): # rownumber = 0 through 6
   subtotal2.append(sample2[rownumber][1]) 
 
-print(subtotal2)
-print(sum(subtotal2))
+  current_row_value = sample2[rownumber][1]
+  # you can't do this part using method 1
+  prior_row_value = sample2[rownumber-1][1]
+
+print(subtotal2) # [34543, 3, 343, 341, 32, 33, 343]
+print(sum(subtotal2)) # 35638
+
